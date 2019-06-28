@@ -64,6 +64,9 @@
               <repository>apachehudi/hudi-hadoop_${docker.hadoop.version}-hive_${docker.hive.version}-sparkbase_${docker.spark.version}</repository>
               <forceTags>true</forceTags>
               <tag>latest</tag>
+              <!--<buildArgs>-->
+                <!--<SPARK_VERSION>${docker.spark.version}</SPARK_VERSION>-->
+              <!--</buildArgs>-->
             </configuration>
           </execution>
           <execution>
@@ -80,6 +83,9 @@
               <repository>apachehudi/hudi-hadoop_${docker.hadoop.version}-hive_${docker.hive.version}-sparkbase_${docker.spark.version}</repository>
               <forceTags>true</forceTags>
               <tag>${project.version}</tag>
+              <!--<buildArgs>-->
+                <!--<SPARK_VERSION>${docker.spark.version}</SPARK_VERSION>-->
+              <!--</buildArgs>-->
             </configuration>
           </execution>
         </executions>

@@ -15,7 +15,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>hoodie</artifactId>
     <groupId>com.uber.hoodie</groupId>
@@ -92,7 +93,7 @@
       <artifactId>hive-shims</artifactId>
       <version>${hive.version}</version>
     </dependency>
-     <dependency>
+    <dependency>
       <groupId>${hive.groupid}</groupId>
       <artifactId>hive-serde</artifactId>
       <version>${hive.version}</version>
@@ -131,16 +132,6 @@
     <dependency>
       <groupId>org.apache.parquet</groupId>
       <artifactId>parquet-avro</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.twitter</groupId>
-      <artifactId>parquet-avro</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.twitter</groupId>
-      <artifactId>parquet-hadoop-bundle</artifactId>
     </dependency>
 
     <dependency>
@@ -186,54 +177,62 @@
               <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml
               </dependencyReducedPomLocation>
               <relocations>
-                 <relocation>
-                   <pattern>parquet.avro</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.avro</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.column</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.column</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.format.</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.format.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.hadoop.</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.hadoop.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.schema</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.schema</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>org.apache.commons.</pattern>
-                   <shadedPattern>com.uber.hoodie.org.apache.commons.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>org.apache.commons.codec.</pattern>
-                   <shadedPattern>com.uber.hoodie.org.apache.commons.codec.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>com.esotericsoftware.kryo.</pattern>
-                   <shadedPattern>com.uber.hoodie.com.esotericsoftware.kryo.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>org.objenesis.</pattern>
-                   <shadedPattern>com.uber.hoodie.org.objenesis.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>com.esotericsoftware.minlog.</pattern>
-                   <shadedPattern>com.uber.hoodie.com.esotericsoftware.minlog.</shadedPattern>
-                 </relocation>
+                <relocation>
+                  <pattern>org.apache.parquet</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.parquet</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.avro</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.avro</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>parquet.avro</pattern>
+                  <shadedPattern>com.uber.hoodie.parquet.avro</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>parquet.column</pattern>
+                  <shadedPattern>com.uber.hoodie.parquet.column</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>parquet.format.</pattern>
+                  <shadedPattern>com.uber.hoodie.parquet.format.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>parquet.hadoop.</pattern>
+                  <shadedPattern>com.uber.hoodie.parquet.hadoop.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>parquet.schema</pattern>
+                  <shadedPattern>com.uber.hoodie.parquet.schema</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.commons.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.commons.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.commons.codec.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.commons.codec.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>com.esotericsoftware.kryo.</pattern>
+                  <shadedPattern>com.uber.hoodie.com.esotericsoftware.kryo.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.objenesis.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.objenesis.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>com.esotericsoftware.minlog.</pattern>
+                  <shadedPattern>com.uber.hoodie.com.esotericsoftware.minlog.</shadedPattern>
+                </relocation>
               </relocations>
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <artifactSet>
                 <includes>
                   <include>com.uber.hoodie:hoodie-common</include>
                   <include>com.uber.hoodie:hoodie-hadoop-mr</include>
-                  <include>com.twitter:parquet-avro</include>
-                  <include>com.twitter:parquet-hadoop-bundle</include>
+                  <!--<include>com.twitter:parquet-avro</include>-->
+                  <!--<include>com.twitter:parquet-hadoop-bundle</include>-->
                   <include>com.twitter.common:objectsize</include>
                   <include>commons-logging:commons-logging</include>
                   <include>commons-io:commons-io</include>
@@ -241,6 +240,9 @@
                   <include>org.objenesis:objenesis</include>
                   <include>com.esotericsoftware:minlog</include>
                   <include>commons-codec:commons-codec</include>
+                  <!-- higher than hive 2.3-->
+                  <include>org.apache.avro:*</include>
+                  <include>org.apache.parquet:*</include>
                 </includes>
               </artifactSet>
               <filters>

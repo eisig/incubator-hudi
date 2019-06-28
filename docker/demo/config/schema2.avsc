@@ -18,7 +18,12 @@
      "type": "string"
   },{
      "name": "high", 
-     "type": "double"
+     "type": {
+                  "type": "bytes",
+                  "logicalType": "decimal",
+                  "precision": 20,
+                  "scale": 2
+                }
   },{
      "name": "low", 
      "type": "double"
@@ -33,12 +38,7 @@
      "type": "double"
   }, {
      "name": "open", 
-     "type": {
-        "type": "bytes",
-         "logicalType": "decimal",
-          "precision": 10,
-          "scale": 2
-       }
+     "type": "double"
   }, {
      "name": "day", 
      "type":"string"

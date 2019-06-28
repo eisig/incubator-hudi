@@ -129,7 +129,7 @@
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <fasterxml.version>2.6.7</fasterxml.version>
-    <parquet.version>1.8.1</parquet.version>
+    <parquet.version>1.10.1</parquet.version>
     <junit.version>4.11</junit.version>
     <mockito.version>1.9.5</mockito.version>
     <log4j.version>1.2.17</log4j.version>
@@ -138,8 +138,8 @@
     <hive.groupid>org.apache.hive</hive.groupid>
     <hive.version>2.3.1</hive.version>
     <metrics.version>4.0.2</metrics.version>
-    <spark.version>2.1.0</spark.version>
-    <avro.version>1.7.7</avro.version>
+    <spark.version>2.4.3</spark.version>
+    <avro.version>1.8.2</avro.version>
     <scala.version>2.11.8</scala.version>
     <scala.libversion>2.11</scala.libversion>
     <surefire-log4j.file>file://${project.basedir}/src/test/resources/log4j-surefire.properties</surefire-log4j.file>
@@ -148,6 +148,8 @@
     <codehaus-jackson.version>1.9.13</codehaus-jackson.version>
     <notice.dir>${project.basedir}</notice.dir>
     <notice.file>NOTICE.txt</notice.file>
+    <netty.version>4.1.17.Final</netty.version>
+    <janino.version>3.0.9</janino.version>
   </properties>
 
   <scm>
@@ -515,6 +517,18 @@
       </dependency>
 
       <dependency>
+        <groupId>org.apache.parquet</groupId>
+        <artifactId>parquet-column</artifactId>
+        <version>${parquet.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.parquet</groupId>
+        <artifactId>parquet-hadoop-bundle</artifactId>
+        <version>${parquet.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.apache.avro</groupId>
         <artifactId>avro-mapred</artifactId>
         <version>${avro.version}</version>
@@ -596,11 +610,11 @@
         <artifactId>parquet-hadoop-bundle</artifactId>
         <version>1.6.0</version>
       </dependency>
-      <dependency>
-        <groupId>com.twitter</groupId>
-        <artifactId>parquet-hive-bundle</artifactId>
-        <version>1.6.0</version>
-      </dependency>
+      <!--<dependency>-->
+        <!--<groupId>com.twitter</groupId>-->
+        <!--<artifactId>parquet-hive-bundle</artifactId>-->
+        <!--<version>1.6.0</version>-->
+      <!--</dependency>-->
       <dependency>
         <groupId>com.twitter</groupId>
         <artifactId>parquet-avro</artifactId>
@@ -640,6 +654,12 @@
             <artifactId>*</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-avro_2.11</artifactId>
+        <version>${spark.version}</version>
       </dependency>
 
       <dependency>
@@ -771,6 +791,24 @@
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-xc</artifactId>
         <version>${codehaus-jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.codehaus.janino</groupId>
+        <artifactId>janino</artifactId>
+        <version>${janino.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.codehaus.janino</groupId>
+        <artifactId>commons-compiler</artifactId>
+        <version>${janino.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>${netty.version}</version>
       </dependency>
 
       <dependency>

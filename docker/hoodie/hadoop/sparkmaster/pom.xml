@@ -49,6 +49,13 @@
         <groupId>com.spotify</groupId>
         <artifactId>dockerfile-maven-plugin</artifactId>
         <version>${dockerfile.maven.version}</version>
+        <configuration>
+          <buildArgs>
+            <buildArgs>
+              <SPARK_VERSION>${docker.spark.version}</SPARK_VERSION>
+            </buildArgs>
+          </buildArgs>
+        </configuration>
         <executions>
           <execution>
             <id>tag-latest</id>
@@ -64,6 +71,9 @@
               <repository>apachehudi/hudi-hadoop_${docker.hadoop.version}-hive_${docker.hive.version}-sparkmaster_${docker.spark.version}</repository>
               <forceTags>true</forceTags>
               <tag>latest</tag>
+              <buildArgs>
+                <SPARK_VERSION>${docker.spark.version}</SPARK_VERSION>
+              </buildArgs>
             </configuration>
           </execution>
           <execution>
@@ -80,6 +90,9 @@
               <repository>apachehudi/hudi-hadoop_${docker.hadoop.version}-hive_${docker.hive.version}-sparkmaster_${docker.spark.version}</repository>
               <forceTags>true</forceTags>
               <tag>${project.version}</tag>
+              <buildArgs>
+                <SPARK_VERSION>${docker.spark.version}</SPARK_VERSION>
+              </buildArgs>
             </configuration>
           </execution>
         </executions>

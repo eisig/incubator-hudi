@@ -15,7 +15,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>hoodie</artifactId>
     <groupId>com.uber.hoodie</groupId>
@@ -121,8 +122,17 @@
     </dependency>
 
     <dependency>
-      <groupId>com.twitter</groupId>
+      <groupId>org.apache.parquet</groupId>
       <artifactId>parquet-avro</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.parquet</groupId>
+      <artifactId>parquet-hadoop-bundle</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
     </dependency>
 
     <dependency>
@@ -130,7 +140,7 @@
       <artifactId>hoodie-hadoop-mr-bundle</artifactId>
       <version>${project.version}</version>
     </dependency>
- 
+
     <dependency>
       <groupId>com.uber.hoodie</groupId>
       <artifactId>hoodie-hive</artifactId>
@@ -147,10 +157,10 @@
 
   <build>
     <resources>
-       <resource>
-         <directory>src/main/resources</directory>
-       </resource>
-     </resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.rat</groupId>
@@ -168,42 +178,34 @@
             </goals>
             <configuration>
               <relocations>
-                 <relocation>
+                <relocation>
                   <pattern>com.beust.</pattern>
                   <shadedPattern>com.uber.hoodie.com.beust.</shadedPattern>
-                 </relocation>
-                 <relocation>
+                </relocation>
+                <relocation>
                   <pattern>org.joda.</pattern>
                   <shadedPattern>com.uber.hoodie.org.joda.</shadedPattern>
-                 </relocation>
-                 <relocation>
+                </relocation>
+                <relocation>
                   <pattern>com.google.</pattern>
                   <shadedPattern>com.uber.hoodie.com.google.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>org.slf4j.</pattern>
-                   <shadedPattern>com.uber.hoodie.org.slf4j.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>org.apache.commons.</pattern>
-                   <shadedPattern>com.uber.hoodie.org.apache.commons.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.column</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.column</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.format.</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.format.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.hadoop.</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.hadoop.</shadedPattern>
-                 </relocation>
-                 <relocation>
-                   <pattern>parquet.schema.</pattern>
-                   <shadedPattern>com.uber.hoodie.parquet.schema.</shadedPattern>
-                 </relocation>
+                </relocation>
+                <relocation>
+                  <pattern>org.slf4j.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.slf4j.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.commons.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.commons.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.parquet.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.parquet.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.avro.</pattern>
+                  <shadedPattern>com.uber.hoodie.org.apache.avro.</shadedPattern>
+                </relocation>
               </relocations>
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <artifactSet>
@@ -212,6 +214,9 @@
                   <exclude>org.apache.hadoop:*</exclude>
                   <exclude>org.apache.hive:*</exclude>
                   <exclude>org.apache.derby:derby</exclude>
+                  <exclude>org.apache.thrift:*</exclude>
+                  <exclude>org.apache.httpcomponents:httpcore</exclude>
+                  <exclude>org.apache.httpcomponents:httpclient</exclude>
                 </excludes>
               </artifactSet>
               <filters>
@@ -224,6 +229,7 @@
                     <!-- Use this jar's NOTICE and license file -->
                     <exclude>META-INF/NOTICE*</exclude>
                     <exclude>META-INF/LICENSE*</exclude>
+                    <exclude>librocksdbjni-*</exclude>
                   </excludes>
                 </filter>
               </filters>
